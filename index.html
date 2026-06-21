@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="INFILL: an open-vocabulary 3D asset database expanded on demand by a closed-loop agentic data engine for social-navigation simulation.">
+  <meta name="keywords" content="3D assets, social navigation, embodied AI, dataset, generative 3D, affordances, simulation">
+  <title>INFILL — Open-Vocabulary 3D Asset Database with Closed-Loop Expansion</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="INFILL: An Open-Vocabulary 3D Asset Database with Closed-Loop Expansion for Social Navigation">
+  <meta property="og:description" content="A closed-loop agentic data engine that grows a simulation-ready, affordance-labeled 3D asset catalog on demand.">
+  <meta property="og:image" content="static/images/sim_demos.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪑</text></svg>">
+
+  <!-- Bulma + icon fonts (same stack as Nerfies-derived pages) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-bold" href="#top">INFILL</a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#engine">Data Engine</a>
+        <a class="navbar-item" href="#gallery">3D Gallery</a>
+        <a class="navbar-item" href="#simulation">In Simulation</a>
+        <a class="navbar-item" href="#statistics">Statistics</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 publication-title">
+        INFILL: An Open-Vocabulary 3D Asset Database<br>
+        with Closed-Loop Expansion for Social Navigation
+      </h1>
+
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">Anonymous Authors</span>
+      </div>
+      <div class="is-size-6 publication-authors has-text-grey">
+        <span class="author-block">Anonymous Institutions</span>
+      </div>
+
+      <!-- link buttons -->
+      <div class="publication-links mt-5">
+        <span class="link-block">
+          <a href="https://huggingface.co/datasets/darmstadtiumterrible/INFILL-1K" target="_blank" rel="noopener" class="button is-dark is-rounded">
+            <span class="icon">🤗</span><span>Dataset (INFILL-1K)</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KEY STATS ===================== -->
+<section class="section pt-4 pb-5">
+  <div class="container is-max-widescreen">
+    <div class="columns is-mobile is-multiline has-text-centered stat-row">
+      <div class="column"><p class="stat-num">1,000+</p><p class="stat-lbl">VLM-verified, affordance-labeled assets</p></div>
+      <div class="column"><p class="stat-num">~10 min</p><p class="stat-lbl">per asset on one consumer GPU</p></div>
+      <div class="column"><p class="stat-num">80%</p><p class="stat-lbl">in-loop pass rate</p></div>
+      <div class="column"><p class="stat-num">3</p><p class="stat-lbl">target domains: hospital, office, airport</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABSTRACT ===================== -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="content is-size-5 abstract-text">
+      <p>
+        Social-navigation robots are trained in simulation, but the asset libraries that furnish those
+        simulators are built by hand and rarely updated. They tend to lack the everyday objects a robot
+        meets in hospitals, offices, and airports: gurneys, check-in kiosks, printer stations, queue barriers.
+      </p>
+      <p>
+        <b>INFILL treats the catalog as something that grows.</b> When a scene calls for an object the
+        library can&rsquo;t supply, INFILL generates it to fit the space, labels how a person would
+        physically use it, and checks it in a physics simulator before adding it in. Anything that fails
+        feeds back to steer what gets generated next, so the catalog keeps expanding toward whatever the
+        simulated scenes actually need. The dataset is openly available &mdash; explore a live slice below,
+        or download the full release.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DATA ENGINE ===================== -->
+<section class="section has-background-light" id="engine">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">The INFILL Data Engine</h2>
+    <p class="subtitle is-5 has-text-centered has-text-grey mb-5">
+      A closed loop: when the catalog can&rsquo;t supply an object, INFILL generates it, labels how it&rsquo;s
+      used, checks it in simulation, and learns from whatever fails.
+    </p>
+
+    <figure class="image">
+      <img src="static/images/pipeline.png" alt="INFILL data-engine loop, end to end">
+    </figure>
+    <p class="caption mt-3">
+      <b>The loop, end to end.</b> A request the catalog can&rsquo;t satisfy triggers generation under size
+      and physics constraints; an affordance step labels how people use the object; the finished asset is
+      handed off to the catalog and arranged into scenes; and the failure cases feed back to re-weight the
+      next round of generation.
+    </p>
+
+    <div class="columns is-multiline mt-5 module-cards">
+      <div class="column is-one-fifth">
+        <div class="module-card"><span class="mtag">1</span>
+          <h3>Find the real gaps</h3>
+          <p>Every request is first matched against the existing catalog. Only the genuine gaps &mdash; objects
+             that truly aren&rsquo;t there yet &mdash; are passed on, so the engine never regenerates what it already has.</p>
+        </div>
+      </div>
+      <div class="column is-one-fifth">
+        <div class="module-card"><span class="mtag">2</span>
+          <h3>Generate to fit</h3>
+          <p>Missing objects are generated to match a target footprint, then cleaned up into straight-edged,
+             simulator-ready meshes that drop into a scene at the right scale.</p>
+        </div>
+      </div>
+      <div class="column is-one-fifth">
+        <div class="module-card"><span class="mtag">3</span>
+          <h3>Label how it&rsquo;s used</h3>
+          <p>A vision-language model marks how people physically interact with each object &mdash; where you sit,
+             lean, stand, or queue &mdash; and paints those labels directly onto the mesh.</p>
+        </div>
+      </div>
+      <div class="column is-one-fifth">
+        <div class="module-card"><span class="mtag">4</span>
+          <h3>Build it into scenes</h3>
+          <p>Agents arrange the new assets into believable rooms, score how plausible each layout is, and
+             surface the next objects the scenes are still missing.</p>
+        </div>
+      </div>
+      <div class="column is-one-fifth">
+        <div class="module-card"><span class="mtag">5</span>
+          <h3>Learn from failure</h3>
+          <p>Whatever gets rejected &mdash; by the quality check, the physics gate, or a downstream robot
+             rollout &mdash; becomes a signal that steers what the engine generates next.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- affordance vocabulary -->
+    <div class="has-text-centered mt-5">
+      <p class="is-size-6 has-text-grey mb-2">Pose-level HOI affordance vocabulary projected onto every asset:</p>
+      <div class="afford-tags">
+        <span class="tag is-medium">sit</span>
+        <span class="tag is-medium">lay</span>
+        <span class="tag is-medium">lean-against</span>
+        <span class="tag is-medium">stand-on</span>
+        <span class="tag is-medium">step-on</span>
+        <span class="tag is-medium">support</span>
+        <span class="tag is-medium">traverse</span>
+        <span class="tag is-medium">queue-at</span>
+        <span class="tag is-medium">operate</span>
+        <span class="tag is-medium">none</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INTERACTIVE 3D GALLERY ===================== -->
+<section class="section" id="gallery">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Interactive 3D Asset Gallery</h2>
+    <p class="subtitle is-5 has-text-centered has-text-grey">
+      A live slice of the INFILL catalog. Click any asset to spin it 360&deg;
+      <span class="has-text-grey-light">— drag to rotate, release to coast.</span>
+    </p>
+
+    <div id="gallery-toolbar" class="has-text-centered mb-5">
+      <div id="domain-filters" class="domain-filters"></div>
+      <p id="gallery-count" class="is-size-7 has-text-grey mt-2"></p>
+    </div>
+
+    <div id="gallery-grid" class="gallery-grid"></div>
+    <div id="gallery-more" class="has-text-centered mt-5"></div>
+
+    <p id="gallery-empty" class="has-text-centered has-text-grey" style="display:none">
+      No turntable assets found. Run
+      <code>python3 scripts/build_turntable_manifest.py</code> after rendering, then reload.
+    </p>
+  </div>
+</section>
+
+<!-- 360 lightbox -->
+<div id="viewer-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content viewer-shell">
+    <div class="viewer-head">
+      <span id="viewer-title" class="viewer-title"></span>
+      <span id="viewer-domain" class="tag is-info is-light"></span>
+    </div>
+    <div class="stage" id="stage">
+      <canvas id="canvas"></canvas>
+      <div class="loader" id="loader"><div>Loading 360&deg; view…</div>
+        <div class="bar"><i id="barfill"></i></div></div>
+      <div class="hint" id="hint">⟲ drag to rotate</div>
+    </div>
+    <div class="viewer-controls">
+      <button id="spinBtn" class="active">⟳ Auto-spin</button>
+      <button id="prevBtn">‹ Prev</button>
+      <button id="nextBtn">Next ›</button>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<!-- ===================== IN SIMULATION ===================== -->
+<section class="section has-background-light" id="simulation">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Generated Assets in a Real Simulator</h2>
+    <figure class="image">
+      <img src="static/images/sim_demos.png" alt="INFILL-generated assets placed in Isaac Sim scenes">
+    </figure>
+    <p class="caption mt-3">
+      <b>Isaac Sim scenes populated with INFILL-generated assets</b> across outdoor-service, workshop, and
+      storage-room settings (Plant Workshop, Library, Pharmacy). The expanded catalog supports simulator-ready
+      placement of domain-specific furniture with consistent scale, collision geometry, and scene context for
+      downstream mobile-robot evaluation.
+    </p>
+
+  </div>
+</section>
+
+<!-- ===================== STATISTICS ===================== -->
+<section class="section" id="statistics">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Dataset Coverage &amp; Quality</h2>
+
+    <div class="columns is-vcentered mt-4">
+      <div class="column is-half">
+        <figure class="image"><img src="static/images/domain_coverage.png" alt="INFILL domain coverage"></figure>
+        <p class="caption mt-2">
+          <b>Domain coverage (INFILL-1K, seven expansion sweeps).</b> The release spans the target
+          hospital/office/airport distribution and adjacent public-space domains; the sunburst shows the
+          category breakdown (furniture, container, appliance, material, other). Closed-loop expansion
+          broadens the catalog rather than saturating a single category family.
+        </p>
+      </div>
+      <div class="column is-half">
+        <figure class="image"><img src="static/images/quality_signals.png" alt="INFILL quality signals across sweeps"></figure>
+        <p class="caption mt-2">
+          <b>Quality signals across sweeps.</b> Left: per-sweep artifact completeness, VLM plausibility, human
+          subset agreement, and physics-gate survival. Right: VLM-scored sample size and asset-match signals.
+          The release maintains complete artifacts while quality signals remain stable across the production run.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container has-text-centered">
+    <p class="is-size-7 has-text-grey">
+      Website template adapted from
+      <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> (CC BY-SA 4.0).
+    </p>
+  </div>
+</footer>
+
+<!-- manifest first (defines window.TURNTABLE_DATA), then app logic -->
+<script src="static/js/assets-manifest.js"></script>
+<script src="static/js/index.js"></script>
+</body>
+</html>

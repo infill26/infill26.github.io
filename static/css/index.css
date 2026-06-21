@@ -1,0 +1,203 @@
+/* ===================================================================
+   INFILL project page — custom styles on top of Bulma
+   =================================================================== */
+
+:root {
+  --accent: #2b6cb0;
+  --accent-dark: #1f4e79;
+  --ink: #1f2733;
+  --muted: #667;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+
+body {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  padding-top: 3.25rem; /* fixed navbar */
+}
+
+.title, .publication-title { font-family: 'Newsreader', Georgia, serif; }
+
+.navbar.is-fixed-top { box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+.navbar-item.has-text-weight-bold { letter-spacing: .04em; }
+
+/* ---------- hero ---------- */
+.hero { background: linear-gradient(180deg, #ffffff 0%, #f4f6f9 100%); }
+.publication-title { line-height: 1.18; margin-bottom: 1.2rem; }
+.publication-authors { margin-bottom: .15rem; }
+.author-block { white-space: nowrap; }
+
+.venue-badge {
+  display: inline-block;
+  background: #eef2f7;
+  color: var(--accent-dark);
+  border: 1px solid #d7e0ea;
+  border-radius: 999px;
+  padding: .35rem 1rem;
+  font-weight: 600;
+}
+
+.publication-links { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+.publication-links .button { transition: transform .12s ease; }
+.publication-links .button:hover { transform: translateY(-2px); }
+.publication-links .button .icon { font-style: normal; }
+
+/* ---------- captions / abstract ---------- */
+.caption {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+.abstract-text p { text-align: justify; }
+
+figure.image img { border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.10); }
+
+/* ---------- headline stats ---------- */
+.stat-row .stat-num {
+  font-family: 'Newsreader', serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  line-height: 1;
+}
+.stat-row .stat-lbl { font-size: .85rem; color: var(--muted); margin-top: .35rem; }
+
+/* ---------- module cards ---------- */
+.module-cards .module-card {
+  background: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  height: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.module-card .mtag {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: .8rem;
+  border-radius: 6px;
+  padding: .12rem .5rem;
+  margin-bottom: .5rem;
+}
+.module-card h3 { font-weight: 700; font-size: .98rem; margin-bottom: .4rem; line-height: 1.25; }
+.module-card p { font-size: .85rem; color: #4a5360; line-height: 1.45; }
+
+/* ---------- affordance tags ---------- */
+.afford-tags { display: flex; flex-wrap: wrap; gap: .45rem; justify-content: center; }
+.afford-tags .tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #eef2f7; color: var(--accent-dark); font-weight: 600;
+}
+
+/* ---------- gallery ---------- */
+.domain-filters { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+.domain-filters button {
+  border: 1px solid #d3d7dd; background: #fff; color: #333;
+  border-radius: 999px; padding: .35rem .9rem; font-size: .82rem; cursor: pointer;
+  transition: all .12s ease;
+}
+.domain-filters button:hover { border-color: var(--accent); color: var(--accent); }
+.domain-filters button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.domain-filters .more-domains {
+  border: 1px dashed #c7cdd6; background: transparent; color: var(--muted); font-weight: 600;
+}
+.domain-filters .more-domains:hover { color: var(--accent); border-color: var(--accent); }
+
+.show-more-btn {
+  border: 1px solid var(--accent); background: #fff; color: var(--accent);
+  border-radius: 999px; padding: .6rem 1.7rem; font-size: .9rem; font-weight: 600;
+  cursor: pointer; transition: all .12s ease;
+}
+.show-more-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.asset-card {
+  background: #fff; border: 1px solid #e6e9ee; border-radius: 12px;
+  overflow: hidden; cursor: pointer; transition: transform .12s ease, box-shadow .12s ease;
+  display: flex; flex-direction: column;
+}
+.asset-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.asset-thumb {
+  position: relative; width: 100%; aspect-ratio: 1/1;
+  background: radial-gradient(circle at 50% 42%, #ffffff 0%, #eef0f3 72%, #e6e8ec 100%);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.asset-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.asset-thumb .spin-badge {
+  position: absolute; right: 8px; bottom: 8px; background: rgba(43,108,176,.92); color: #fff;
+  font-size: .68rem; padding: .12rem .45rem; border-radius: 999px; opacity: 0; transition: opacity .15s;
+}
+.asset-card:hover .spin-badge { opacity: 1; }
+.asset-meta { padding: .55rem .65rem .65rem; }
+.asset-meta .asset-name { font-weight: 600; font-size: .85rem; line-height: 1.2; }
+.asset-meta .asset-dom { font-size: .72rem; color: var(--muted); margin-top: .12rem; }
+
+/* ---------- 360 viewer modal ---------- */
+.viewer-shell { width: min(92vw, 640px); }
+.viewer-head { display: flex; align-items: center; justify-content: center; gap: .6rem; margin-bottom: .7rem; }
+.viewer-title { color: #fff; font-weight: 600; font-size: 1.15rem; }
+.stage {
+  position: relative; width: 100%; aspect-ratio: 1/1;
+  background: radial-gradient(circle at 50% 42%, #ffffff 0%, #eef0f3 70%, #e6e8ec 100%);
+  border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,.25); overflow: hidden;
+  touch-action: none; cursor: grab; user-select: none;
+}
+.stage.grabbing { cursor: grabbing; }
+.stage canvas { width: 100%; height: 100%; display: block; }
+.loader {
+  position: absolute; inset: 0; width: auto; height: auto;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px; color: #778;
+  border: 0; border-radius: 0; animation: none; /* override Bulma's .loader spinner */
+}
+.loader .bar { width: 54%; height: 6px; background: #dde1e6; border-radius: 4px; overflow: hidden; }
+.loader .bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .12s; }
+.hint {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  font-size: 13px; color: #667; background: rgba(255,255,255,.82);
+  padding: 6px 12px; border-radius: 20px; pointer-events: none; transition: opacity .4s;
+}
+.hint.hidden { opacity: 0; }
+.viewer-controls { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
+.viewer-controls button {
+  border: 1px solid rgba(255,255,255,.4); background: rgba(255,255,255,.92); color: #333;
+  border-radius: 8px; padding: 7px 14px; font-size: 14px; cursor: pointer;
+}
+.viewer-controls button:hover { border-color: #fff; color: var(--accent); }
+.viewer-controls button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---------- media placeholders ---------- */
+.media-placeholder {
+  border: 2px dashed #c7cdd6; border-radius: 12px; background: #fafbfc;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.video-placeholder { padding: 0; }
+.video-placeholder video { width: 100%; display: block; border-radius: 10px; background: #000; }
+.img-placeholder { aspect-ratio: 4/3; color: #aeb6c2; }
+.img-placeholder span { font-size: 2.4rem; }
+.ph-note { font-size: .72rem; color: #98a1ad; font-family: ui-monospace, Menlo, monospace; margin: .5rem; }
+
+/* ---------- bibtex ---------- */
+pre.bibtex {
+  background: #f4f6f9; border: 1px solid #e6e9ee; border-radius: 10px;
+  padding: 1.1rem 1.25rem; font-size: .85rem; overflow-x: auto;
+}
+
+.footer { background: #fff; border-top: 1px solid #e6e9ee; padding: 2rem 1.5rem; }
+
+@media (max-width: 640px) {
+  .stat-row .stat-num { font-size: 1.6rem; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+}
